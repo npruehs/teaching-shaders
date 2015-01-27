@@ -5,16 +5,16 @@ Shader "Tutorial/Green"
     {
         Pass
         {
-			// Use Cg shader language.
+            // Use Cg shader language.
             CGPROGRAM
 
-			// Define shader entry points.
+            // Define shader entry points.
             #pragma vertex vert
             #pragma fragment frag
             
             #include "UnityCG.cginc"
 
-			// Define vertex shader output format.
+            // Define vertex shader output format.
             struct v_Output
             {
                 float4 position : POSITION;
@@ -25,16 +25,16 @@ Shader "Tutorial/Green"
             {
                 v_Output OUT;
 
-				// Transform object coordinates to clip coordinates.
+                // Transform object coordinates to clip coordinates.
                 OUT.position = mul(UNITY_MATRIX_MVP, position);
 
-				// Set vertex color to RGBA green.
+                // Set vertex color to RGBA green.
                 OUT.color    = float4(0, 1, 0, 1); 
 
                 return OUT;
             }
             
-			// Define fragment shader output format.
+            // Define fragment shader output format.
             struct f_Output
             {
                 float4 color : COLOR;
@@ -42,7 +42,7 @@ Shader "Tutorial/Green"
 
             f_Output frag(v_Output v)
             {
-				// Pass-through.
+                // Pass-through.
                 f_Output OUT;
                 OUT.color = v.color;
                 return OUT;

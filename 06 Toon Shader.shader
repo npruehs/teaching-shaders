@@ -4,7 +4,7 @@ Shader "Tutorial/Toon Shader"
     // Properties exposed to the Unity inspector.
     Properties
     {
-		_Kd ("Kd", Color) = (1, 1, 1, 1)
+        _Kd ("Kd", Color) = (1, 1, 1, 1)
         _Ks ("Ks", Color) = (1, 1, 1, 1)
         _Shininess ("_Shininess", Float) = 5.0
     }
@@ -38,19 +38,19 @@ Shader "Tutorial/Toon Shader"
             };
 
             v_Output vert(float4 position : POSITION,
-				float3 normal : NORMAL,
+                float3 normal : NORMAL,
                 const uniform float _Shininess,
-				const uniform float4 _LightColor0)
+                const uniform float4 _LightColor0)
             {
                 v_Output OUT;
 
                 // Transform object coordinates to clip coordinates.
                 OUT.position = mul(UNITY_MATRIX_MVP, position);
 
-				// Compute the diffuse term.
-				float3 N = normalize(normal);
-			    float3 L = normalize(_WorldSpaceLightPos0.xyz - position.xyz);
-			    OUT.diffuse = max(dot(N, L), 0);
+                // Compute the diffuse term.
+                float3 N = normalize(normal);
+                float3 L = normalize(_WorldSpaceLightPos0.xyz - position.xyz);
+                OUT.diffuse = max(dot(N, L), 0);
   
                 // Compute the specular term.
                 float facing = dot(N, L) > 0 ? 1 : 0;
